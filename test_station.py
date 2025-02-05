@@ -17,6 +17,7 @@ def test_create_monitoring_station():
     river = "River X"
     town = "My Town"
     s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
+    
 
     assert s.station_id == s_id
     assert s.measure_id == m_id
@@ -25,3 +26,8 @@ def test_create_monitoring_station():
     assert s.typical_range == trange
     assert s.river == river
     assert s.town == town
+    assert(s.typical_range_consistent() == True)
+
+def test_inconsistent_trange_stations():
+    from floodsystem.stationdata import build_station_list
+    assert type(test_inconsistent_trange_stations(build_station_list())) == list

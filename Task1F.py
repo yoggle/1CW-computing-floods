@@ -1,9 +1,12 @@
-from floodsystem.geo import rivers_by_station_number
 from floodsystem.stationdata import build_station_list
+from floodsystem.station import inconsistent_typical_range_stations
 
 def run():
-    """print the names of, and the number of stations on the 9 rivers with the most monitoring stations"""
-    print(rivers_by_station_number(build_station_list(),9))
+    """prints all stations with inconsistent typical ranges"""
+    toprint = []
+    for i in inconsistent_typical_range_stations(build_station_list()):
+        toprint.append(i.name)
+    print(sorted(toprint))
 
 if __name__ == "__main__":
     run()
