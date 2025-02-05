@@ -29,9 +29,31 @@ def stations_by_distance(stations,point):
     return sorted(stations, key = dist)
 
 def stations_within_radius(stations, centre, r):
+    """ returns a list of stations within a set radius of a coordinate"""
     passed = []
     for i in stations:
         if haversine(origin = centre,new = i.coord) < r:
             passed.append(i)
     
     return passed
+
+def rivers_with_stations(stations):
+    """ returns a list with no duplicates of all rivers that have a station on them in a given list of stations"""
+    rivers = []
+    for i in stations:
+        if i.river not in rivers:
+            rivers.append(i.river)
+
+    return rivers
+
+def stations_by_rivers(stations):
+    """ returns a dictionary of river names, and the stations on the river """
+    dictionary = {}
+    for i in rivers_with_stations(stations):
+        templist = []
+        for j in stations:
+            if j.river == i:
+                templist.append(j)
+        dictionary[i] = templist
+    
+    return(dictionary)
