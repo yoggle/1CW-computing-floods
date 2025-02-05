@@ -57,3 +57,18 @@ def stations_by_rivers(stations):
         dictionary[i] = templist
     
     return(dictionary)
+
+def rivers_by_station_number(stations,N):
+    """returns a list of the N rivers with the most monitoring stations, including stations with the same number of stations at the Nth one"""
+    riverdict = stations_by_rivers(stations)
+    big_list = []
+    for i in riverdict.keys():
+        big_list.append((i,len(riverdict[i])))
+    big_list = sorted_by_key(big_list,1,reverse = True)
+    stationnumber = big_list[N-1][1]
+    small_list = []
+    for i in big_list:
+        if i[1] >= stationnumber:
+            small_list.append(i)
+    return small_list
+

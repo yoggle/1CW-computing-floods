@@ -23,3 +23,8 @@ def test_stations_by_rivers():
     from floodsystem.geo import stations_by_rivers, rivers_with_stations
     from floodsystem.stationdata import build_station_list
     assert stations_by_rivers(build_station_list)["River Cam"] == list
+
+def test_lots_of_stations():
+    from floodsystem.geo import rivers_by_station_number
+    from floodsystem.stationdata import build_station_list
+    assert len(rivers_by_station_number(build_station_list,6)) >= 6
