@@ -8,3 +8,4 @@ def test_sort():
     from floodsystem.geo import stations_by_distance
     from floodsystem.stationdata import build_station_list
     stations_by_distance(build_station_list(),(37.2837,341.38447))
+

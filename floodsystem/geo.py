@@ -17,7 +17,8 @@ def haversine(origin, new):
     lambda1 = math.radians(origin[1])
     lambda2 = math.radians(new[1])
     havtheta = (np.sin((phi2-phi1)/2))**2 + np.cos(phi1)*np.cos(phi2)*(np.sin((lambda2-lambda1)/2))**2
-    dist = 6371*havtheta
+    theta = 2*np.asin(np.sqrt(havtheta))
+    dist = 6371*theta
     return float(dist)
 
 def stations_by_distance(stations,point):
@@ -26,3 +27,11 @@ def stations_by_distance(stations,point):
         return(haversine(origin,station.coord))
 
     return sorted(stations, key = dist)
+
+def stations_within_radius(stations, centre, r):
+    passed = []
+    for i in stations:
+        if haversine(origin = centre,new = i.coord) < r:
+            passed.append(i)
+    
+    return passed
