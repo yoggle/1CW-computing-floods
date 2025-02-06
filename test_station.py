@@ -30,4 +30,5 @@ def test_create_monitoring_station():
 
 def test_inconsistent_trange_stations():
     from floodsystem.stationdata import build_station_list
-    assert type(test_inconsistent_trange_stations(build_station_list())) == list
+    from floodsystem.station import inconsistent_typical_range_stations
+    assert type(inconsistent_typical_range_stations(build_station_list())) == list
