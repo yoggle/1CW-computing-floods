@@ -17,12 +17,12 @@ def test_stations_in_area():
 def test_rivers_with_stations():
     from floodsystem.geo import rivers_with_stations
     from floodsystem.stationdata import build_station_list
-    assert rivers_with_stations(build_station_list()) == list
+    assert type(rivers_with_stations(build_station_list())) == list
 
 def test_stations_by_rivers():
     from floodsystem.geo import stations_by_rivers, rivers_with_stations
     from floodsystem.stationdata import build_station_list
-    assert stations_by_rivers(build_station_list())["River Cam"] == list
+    assert type(stations_by_rivers(build_station_list())["River Cam"]) == list
 
 def test_lots_of_stations():
     from floodsystem.geo import rivers_by_station_number
