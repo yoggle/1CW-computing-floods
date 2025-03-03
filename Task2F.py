@@ -1,8 +1,4 @@
-# Copyright (C) 2018 Garth N. Wells
-#
-# SPDX-License-Identifier: MIT
 import datetime
-
 from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.flood import stations_highest_rel_level
 from floodsystem.datafetcher import fetch_measure_levels
@@ -23,7 +19,7 @@ def run():
         dt = 2
         dates, levels = fetch_measure_levels(
             i.measure_id, dt=datetime.timedelta(days=dt))
-        plot_water_level_with_fit(i, dates, levels, 4)
+        plot_water_level_with_fit(i, dates, levels, 3)
 
 
 
