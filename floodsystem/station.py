@@ -54,3 +54,13 @@ def inconsistent_typical_range_stations(stations):
         if not i.typical_range_consistent():
             templist.append(i)
     return(templist)
+
+def stations_level_over_threshold(stations, tol):
+    """return water level ratio which is larger than the tol list, adn do the decending ranking order"""
+    result = []
+    for station in stations:
+        level = station.relative_water_level()
+    if level is not None and level > tol:
+        result.append((station, level))
+        
+    return sorted(result, key=lambda x: x[1], reverse=True)
