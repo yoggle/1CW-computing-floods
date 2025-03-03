@@ -48,18 +48,12 @@ class MonitoringStation:
         else:
             return (self.latest_level - self.typical_range[0]) / (self.typical_range[1] - self.typical_range[0])
     
-    def typical_range_consistent(self):
-        '''Confirms that the high low data for the typical range is valid'''
-
-        if (self.typical_range == None):
-            return False
-        elif (self.typical_range[0] == None) or (self.typical_range[1] == None):
-            return(False)
-        elif (self.typical_range[0] > self.typical_range[1]):
-            return False
-        
-        
-        return True
+def inconsistent_typical_range_stations(stations):
+    inconsistent_stations=[]
+    for station in stations:
+        if station.typical_range_consistent()==False:
+            inconsistent_stations.append(station.name)
+    return sorted(inconsistent_stations)
 
 def inconsistent_typical_range_stations(stations):
     inconsistent_stations=[]
