@@ -7,4 +7,4 @@ update_water_levels(stations)
 
 stations_over_threshold = stations_level_over_threshold(stations, 0.8)
 for station, relative_level in stations_over_threshold:
-    print(f"{station.name}  {relative_level}")
+    print(f"{station}  {relative_level}")
