@@ -41,6 +41,13 @@ class MonitoringStation:
         d += "   typical range: {}".format(self.typical_range)
         return d
     
+    def typical_range_consistent(self):
+        """check if the typical range is a tuple, with highvalue greater than lowvalue, returns true if it is and false if it isn't"""
+        if type(self.typical_range) == tuple and self.typical_range[1]-self.typical_range[0] > 0:
+            return True
+        else:
+            return False
+
     def relative_water_level(self):
         """Return the relative water level as a fraction of the typical range"""
         if self.typical_range is None or self.latest_level is None:
@@ -55,9 +62,3 @@ def inconsistent_typical_range_stations(stations):
             inconsistent_stations.append(station.name)
     return sorted(inconsistent_stations)
 
-def inconsistent_typical_range_stations(stations):
-    inconsistent_stations=[]
-    for station in stations:
-        if station.typical_range_consistent()==False:
-            inconsistent_stations.append(station.name)
-    return sorted(inconsistent_stations)
