@@ -1,7 +1,9 @@
 from floodsystem.stationdata import build_station_list, update_water_levels
+from floodsystem.station import inconsistent_typical_range_stations
 
 
 def stations_level_over_threshold(stations, tol):
+    stations.remove(inconsistent_typical_range_stations(stations))
     stations_over_threshold = []
     stations_over_threshold_none = []
     for station in stations:
@@ -14,9 +16,10 @@ def stations_level_over_threshold(stations, tol):
 
 def stations_highest_rel_level(stations, N):
     relative_water_level = []
+    inconsitent_stations = inconsistent_typical_range_stations(stations)
     for station in stations:
         relative_level = station.relative_water_level()
-        if relative_level is not None:
+        if relative_level is not None and station not in inconsitent_stations:
             relative_water_level.append((station,relative_level))
     newlist = sorted(relative_water_level, key=lambda x:x[1], reverse=True)[:N]
     to_return = []

@@ -10,7 +10,7 @@ update_water_levels(stations)
 stations=stations_highest_rel_level(stations, 5)
 for i in stations:
     dt = 2
-    dates, levels = fetch_measure_levels(i[0].measure_id, dt=datetime.timedelta(days=dt))
-    plot_water_level_with_fit(i[0], dates, levels, 3)
+    dates, levels = fetch_measure_levels(i.measure_id, dt=datetime.timedelta(days=dt))
+    plot_water_level_with_fit(i, dates, levels, 3)
 
 
