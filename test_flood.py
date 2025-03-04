@@ -39,5 +39,4 @@ def test_stations_highest_rel_level():
     station3.latest_level = 1.0
     station4.latest_level = 2.5
     stations = [station1, station2, station3, station4]
-    assert stations_highest_rel_level(stations, 2) == [(station2, 5.999999999999999), (station1, 2)]
-print(test_stations_highest_rel_level())
+    assert stations_highest_rel_level(stations, 2) == [station2,station1]
