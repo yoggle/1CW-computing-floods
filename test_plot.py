@@ -6,4 +6,4 @@ def test_plot_water_levels():
 def test_plot_water_level_with_fit():
     from floodsystem.plot import plot_water_level_with_fit
     from floodsystem.stationdata import build_station_list
-    plot_water_level_with_fit(build_station_list()[4],(4,36,7,3,6),(5,7,3,86,6))
+    plot_water_level_with_fit(build_station_list()[4],(4,36,7,3,6),(5,7,3,86,6),5)
