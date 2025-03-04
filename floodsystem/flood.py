@@ -1,9 +1,6 @@
 from floodsystem.stationdata import build_station_list, update_water_levels
 
 
-stations = build_station_list()
-update_water_levels(stations)
-
 def stations_level_over_threshold(stations, tol):
     stations_over_threshold = []
     stations_over_threshold_none = []

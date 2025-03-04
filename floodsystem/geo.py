@@ -72,3 +72,24 @@ def rivers_by_station_number(stations,N):
             small_list.append(i)
     return small_list
 
+
+def towns_with_rivers(stations):
+    """ returns a list with no duplicates of all towns that have a station on them in a given list of stations"""
+    towns = []
+    for i in stations:
+        if i.town not in towns:
+            towns.append(i.town)
+
+    return towns
+
+def stations_by_town(stations):
+    #return a dictionary, keyed by town name, containing all stations associated with the town
+    dictionary = {}
+    for i in towns_with_rivers(stations):
+        templist = []
+        for j in stations:
+            if j.town == i:
+                templist.append(j)
+        dictionary[i] = templist
+    
+    return(dictionary)
